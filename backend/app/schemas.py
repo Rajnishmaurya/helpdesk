@@ -73,3 +73,17 @@ class DashboardSummary(BaseModel):
     status_summary: dict[str, int]
     priority_summary: dict[str, int]
     category_summary: dict[str, int]
+
+
+class StatusUpdate(BaseModel):
+    status: str
+    note: str | None = None
+
+
+class PriorityUpdate(BaseModel):
+    priority: str
+
+
+class CommentCreate(BaseModel):
+    note: str = Field(min_length=1)
+    actor: str = "Support"
