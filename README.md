@@ -4,7 +4,7 @@ An internal IT helpdesk where employees raise support tickets, support staff man
 
 **The AI is advisory only.** Its suggestions are stored separately from the ticket, support staff accept or correct every suggestion, and the AI has no way to change, assign or close a ticket on its own.
 
-Built for the EY Training Capstone Assessment by a team of three.
+Built for the EY Training Capstone Assessment by a team of three - Piyush, Rajnish and Prakriti.
 
 | Layer | Technology |
 |---|---|
