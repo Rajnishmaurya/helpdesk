@@ -1,5 +1,5 @@
 from datetime import datetime
-from typing import Optional
+from typing import Literal, Optional
 
 from pydantic import BaseModel, ConfigDict, EmailStr, Field
 
@@ -87,3 +87,31 @@ class PriorityUpdate(BaseModel):
 class CommentCreate(BaseModel):
     note: str = Field(min_length=1)
     actor: str = "Support"
+
+
+# AI SUGGESTION SCHEMAS (Person C)
+
+class AISuggestionOut(BaseModel):
+    """What the AI endpoints return. Built straight from the AISuggestion database row."""
+    model_config = ConfigDict(from_attributes=True)
+
+    id: int
+    ticket_id: int
+    suggested_category: str
+    suggested_priority: str
+    priority_reason: str
+    troubleshooting_steps: list[str]
+    model_name: str
+    created_at: datetime
+
+
+# AI FEEDBACK SCHEMA (used by routers/feedback.py)
+
+class FeedbackCreate(BaseModel):
+    """The analyst's decision on an AI suggestion.
+    Literal means only these exact values pass; anything else gets a 422 with a clear message."""
+    accepted: bool                      # true = took the AI values as they were
+    useful: bool                        # analyst's rating of the suggestion
+    final_category: Literal["Hardware", "Software", "Network", "Access", "Other"]
+    final_priority: Literal["Low", "Medium", "High"]
+    comment: Optional[str] = Field(default=None, max_length=2000)
