@@ -1,5 +1,5 @@
 """
-routers/ai.py - AI endpoints owned by Person C.
+routers/ai.py - AI endpoints owned by Piyush.
 (The feedback endpoint lives in routers/feedback.py.)
 
 Registered in main.py with: app.include_router(ai.router)
@@ -62,5 +62,6 @@ def list_ai_suggestions(ticket_id: int, db: Session = Depends(get_db)):
     get_ticket_or_404(db, ticket_id)
     rows = db.scalars(select(AISuggestion)
                       .where(AISuggestion.ticket_id == ticket_id)
-                      .order_by(AISuggestion.created_at.desc()))
+                      # id breaks ties when two suggestions share the same timestamp
+                      .order_by(AISuggestion.created_at.desc(), AISuggestion.id.desc()))
     return list(rows)
