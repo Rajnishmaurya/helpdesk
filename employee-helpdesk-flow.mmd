@@ -1,0 +1,36 @@
+https://lovable.dev/projects/c7251b44-1dc0-40bd-81f4-91854796acbb?view=files&file=employee-helpdesk-flow.mmd
+
+
+
+flowchart TD
+    A[Employee opens portal] --> B[Enter issue title, description and requester]
+    B --> C{Valid ticket details?}
+    C -- No --> D[Show validation errors]
+    D --> B
+    C -- Yes --> E[Create ticket with status New]
+    E --> F[Employee tracks ticket in My Tickets]
+    E --> G[Support opens ticket from work queue]
+    G --> H{Use optional AI analysis?}
+    H -- No --> I[Analyst confirms category and priority]
+    H -- Yes --> J[Request AI analysis]
+    J --> K{Analysis available?}
+    K -- No --> L[Show warning and offer retry]
+    L --> J
+    L --> I
+    K -- Yes --> M[Show suggested category, priority and troubleshooting steps]
+    M --> N{Analyst review}
+    N -- Accept --> O[Save suggested values as confirmed values]
+    N -- Correct --> P[Save analyst-selected values and correction feedback]
+    O --> Q[Record review and usefulness feedback]
+    P --> Q
+    Q --> I
+    I --> R[Change status to In Progress]
+    R --> S[Investigate issue and add support comments]
+    S --> T{Issue addressed?}
+    T -- No --> S
+    T -- Yes --> U[Analyst changes status to Resolved]
+    U --> V[Employee reviews resolution and activity history]
+    V --> W{Further investigation needed?}
+    W -- Yes --> X[Support reopens ticket as In Progress]
+    X --> S
+    W -- No --> Y[Ticket remains Resolved]

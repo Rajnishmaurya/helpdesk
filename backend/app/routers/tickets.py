@@ -139,10 +139,10 @@ def create_ticket(
             detail="Unable to create ticket"
         )
  
- 
+
 # 2. LIST AND FILTER TICKETS
 # GET /api/tickets/
- 
+
 @router.get(
     "/",
     response_model=list[TicketResponse]
@@ -152,53 +152,69 @@ def get_tickets(
     category: str | None = None,
     priority: str | None = None,
     requester_id: int | None = None,
+    requester_email: str | None = None,
     db: Session = Depends(get_db)
 ):
- 
     query = db.query(Ticket)
- 
+
+    # Filter by status
     if status_filter is not None:
- 
         if status_filter not in ALLOWED_STATUSES:
             raise HTTPException(
                 status_code=400,
                 detail="Invalid status filter"
             )
- 
+
         query = query.filter(
             Ticket.status == status_filter
         )
- 
+
+    # Filter by category
     if category is not None:
- 
         if category not in ALLOWED_CATEGORIES:
             raise HTTPException(
                 status_code=400,
                 detail="Invalid category filter"
             )
- 
+
         query = query.filter(
             Ticket.category == category
         )
- 
+
+    # Filter by priority
     if priority is not None:
- 
         if priority not in ALLOWED_PRIORITIES:
             raise HTTPException(
                 status_code=400,
                 detail="Invalid priority filter"
             )
- 
+
         query = query.filter(
             Ticket.priority == priority
         )
- 
+
+    # Filter by requester ID
     if requester_id is not None:
- 
         query = query.filter(
             Ticket.requester_id == requester_id
         )
- 
+
+    # Filter by employee email
+    if requester_email is not None:
+        requester = db.query(Requester).filter(
+            Requester.email.ilike(requester_email.strip())
+        ).first()
+
+        if requester is None:
+            raise HTTPException(
+                status_code=404,
+                detail="Employee not found"
+            )
+
+        query = query.filter(
+            Ticket.requester_id == requester.id
+        )
+
     return query.order_by(
         Ticket.created_at.desc()
     ).all()

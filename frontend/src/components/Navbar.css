@@ -1,0 +1,140 @@
+
+/* =========================================
+   NAVBAR
+========================================= */
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 76px;
+  min-height: 76px;
+  z-index: 1000;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 32px;
+  background: #ffffff;
+  border-bottom: 1px solid #e9edf3;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.03);
+}
+
+.navbar-left,
+.navbar-right,
+.navbar-user {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-left {
+  gap: 13px;
+}
+
+.navbar-logo {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  color: #ffffff;
+}
+
+.navbar-brand h2 {
+  margin: 0;
+  color: #172554;
+  font-size: 19px;
+  font-weight: 750;
+  letter-spacing: -0.5px;
+}
+
+.navbar-brand span {
+  display: block;
+  margin-top: 4px;
+  color: #94a3b8;
+  font-size: 11px;
+}
+
+.navbar-right {
+  gap: 28px;
+}
+
+.navbar-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #64748b;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #16a34a;
+  box-shadow: 0 0 0 3px #dcfce7;
+}
+
+.navbar-user {
+  gap: 11px;
+  padding-left: 22px;
+  border-left: 1px solid #e9edf3;
+}
+
+.navbar-user-avatar {
+  width: 39px;
+  height: 39px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #eff6ff;
+  color: #2563eb;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.navbar-user-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.navbar-user-name {
+  color: #1e293b;
+  font-size: 13px;
+  font-weight: 650;
+}
+
+.navbar-user-role {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: #94a3b8;
+  font-size: 11px;
+}
+
+@media (max-width: 600px) {
+  .navbar {
+    padding: 0 14px;
+  }
+
+  .navbar-brand h2 {
+    font-size: 15px;
+  }
+
+  .navbar-brand span,
+  .navbar-status,
+  .navbar-user-info {
+    display: none;
+  }
+
+  .navbar-user {
+    padding-left: 12px;
+  }
+}

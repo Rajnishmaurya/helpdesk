@@ -1,0 +1,268 @@
+
+/* =========================================
+   SIDEBAR
+========================================= */
+
+.sidebar {
+  position: fixed;
+  top: 76px;
+  left: 0;
+  bottom: 0;
+
+  width: 255px;
+  min-width: 255px;
+  height: calc(100vh - 76px);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  padding: 25px 16px 15px;
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  background: #111c35;
+  color: #ffffff;
+  border-right: 1px solid #24314b;
+  z-index: 900;
+}
+
+.sidebar-workspace {
+  width: 100%;
+}
+
+.sidebar-section-heading {
+  padding: 8px 13px 20px;
+  color: #8493ad;
+  font-size: 10px;
+  font-weight: 750;
+  letter-spacing: 1.4px;
+}
+
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.sidebar-link {
+  min-height: 59px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  padding: 10px 12px;
+  border: 1px solid transparent;
+  border-radius: 10px;
+
+  color: #b5c0d3;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.sidebar-link:hover {
+  background: #1d2a45;
+  color: #ffffff;
+}
+
+.sidebar-link.active {
+  background: #1d3765;
+  border-color: #2b4b80;
+  color: #ffffff;
+}
+
+.sidebar-link-icon {
+  width: 35px;
+  height: 35px;
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 9px;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.sidebar-link.active .sidebar-link-icon {
+  background: #2563eb;
+  color: #ffffff;
+}
+
+.sidebar-link-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.sidebar-link-name {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.sidebar-link-description {
+  color: #8190a9;
+  font-size: 10px;
+}
+
+.sidebar-link.active .sidebar-link-description {
+  color: #b9d1ff;
+}
+
+.sidebar-link-arrow {
+  color: #64748b;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.sidebar-link:hover .sidebar-link-arrow,
+.sidebar-link.active .sidebar-link-arrow {
+  opacity: 1;
+}
+
+/* =========================================
+   SIDEBAR BOTTOM
+========================================= */
+
+.sidebar-bottom {
+  margin-top: 30px;
+  padding-top: 17px;
+  border-top: 1px solid #293750;
+}
+
+.sidebar-help-card {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 12px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  background: #1b2b48;
+}
+
+.sidebar-help-icon {
+  width: 34px;
+  height: 34px;
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 9px;
+  background: #263f69;
+  color: #93baff;
+}
+
+.sidebar-help-card div:last-child {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.sidebar-help-card strong {
+  color: #e2e8f0;
+  font-size: 11px;
+}
+
+.sidebar-help-card span {
+  color: #94a3b8;
+  font-size: 10px;
+}
+
+.sidebar-profile {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 13px 7px;
+  border-top: 1px solid #293750;
+}
+
+.sidebar-avatar {
+  width: 39px;
+  height: 39px;
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+  background: #dbeafe;
+  color: #1d4ed8;
+  font-size: 15px;
+  font-weight: 750;
+}
+
+.sidebar-profile-info {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.sidebar-profile-name {
+  overflow: hidden;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 650;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.sidebar-profile-role {
+  color: #94a3b8;
+  font-size: 10px;
+}
+
+.sidebar-logout {
+  width: 100%;
+  min-height: 42px;
+
+  display: flex;
+  align-items: center;
+  gap: 11px;
+
+  padding: 10px 12px;
+  border: 1px solid transparent;
+  border-radius: 9px;
+
+  background: transparent;
+  color: #fca5a5;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.2s ease;
+}
+
+.sidebar-logout:hover {
+  background: rgba(239, 68, 68, 0.12);
+  border-color: rgba(239, 68, 68, 0.2);
+  color: #fecaca;
+}
+
+.sidebar-footer {
+  padding: 14px 5px 0;
+  color: #64748b;
+  font-size: 9px;
+  text-align: center;
+}
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 768px) {
+  .sidebar {
+    width: 215px;
+    min-width: 215px;
+  }
+}
+
+@media (max-height: 600px) {
+  .sidebar-help-card {
+    display: none;
+  }
+}

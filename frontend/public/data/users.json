@@ -1,0 +1,47 @@
+
+{
+  "employees": [
+    {
+      "name": "Asha Menon",
+      "email": "asha.menon@example.com",
+      "role": "employee"
+    },
+    {
+      "name": "Rahul Verma",
+      "email": "rahul.verma@example.com",
+      "role": "employee"
+    },
+    {
+      "name": "Priya Nair",
+      "email": "priya.nair@example.com",
+      "role": "employee"
+    },
+    {
+      "name": "Karan Singh",
+      "email": "karan.singh@example.com",
+      "role": "employee"
+    },
+    {
+      "name": "Meera Iyer",
+      "email": "meera.iyer@example.com",
+      "role": "employee"
+    }
+  ],
+  "support": [
+    {
+      "name": "Prakriti Roy",
+      "email": "prakriti.roy@example.com",
+      "role": "support"
+    },
+    {
+      "name": "Rajnish Maurya",
+      "email": "rajnish.maurya@example.com",
+      "role": "support"
+    },
+    {
+      "name": "Piyush Satish",
+      "email": "piyush.satish@example.com",
+      "role": "support"
+    }
+  ]
+}
